@@ -1,0 +1,62 @@
+<div class="sidenav" [ngClass]="expanded? 'sidenav-expanded': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleexpanded()"><img class="logo-i" src="../../assets/imgs/asociacion-logo.png" alt=""></button>
+        <div class="logo-text" *ngIf="expanded">
+            <img class="logo-text-i" src="../../assets/imgs/asociacion.png" alt="">
+        </div>
+        <button class="btn-close" *ngIf="expanded" (click)="closeSidenav()">
+            <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </button>
+
+    </div>
+
+    <div class="group-nav">
+        <div class="group-name" *ngIf="expanded">MENÚ</div>
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item" *ngFor="let data of navDataMenu">
+                <a class="sidenav-nav-link" [routerLink]="data.routerLink"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                >
+                    <i class="sidenav-link-icon" 
+                    *ngIf="expanded" 
+                    [class]="data.icon" ></i>
+
+                    <i class="sidenav-link-icon" 
+                    *ngIf="!expanded" 
+                    matTooltip={{data.label}}
+                    matTooltipPosition="right"
+                    [class]="data.icon" ></i>
+
+                    <span class="sidenav-link-text" *ngIf="expanded">{{data.label}}</span>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="group-nav">
+        <div class="group-soporte" *ngIf="expanded">SOPORTE</div>
+        <hr class="linea" *ngIf="!expanded">
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item" *ngFor="let data of navDataSoporte">
+                <a class="sidenav-nav-link" [routerLink]="data.routerLink"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                >
+                    <i class="sidenav-link-icon" 
+                    *ngIf="expanded" 
+                    [class]="data.icon" ></i>
+
+                    <i class="sidenav-link-icon" 
+                    *ngIf="!expanded" 
+                    matTooltip={{data.label}}
+                    matTooltipPosition="right"
+                    [class]="data.icon" ></i>
+                    <span class="sidenav-link-text" *ngIf="expanded">{{data.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr class="linea" *ngIf="!expanded">
+</div>
